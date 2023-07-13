@@ -1,0 +1,19 @@
+---
+interface Props {
+    title: string;
+    styles: string;
+    underlineStyles:string;
+}
+
+const { title,styles,underlineStyles } = Astro.props;
+---
+
+<h2
+    class={styles}
+>
+    {title}
+</h2>
+<div
+    class={underlineStyles}
+/>
+

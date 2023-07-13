@@ -1,0 +1,22 @@
+---
+import Callout from '../components/callout/Callout.astro';
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/card/Card.astro';
+import FeatureWeb from '../components/features/FeatureWeb.astro';
+import FeatureIngSoft from '../components/features/FeatureIngSoft.astro';
+import Projects from '../components/projects/Projects.astro';
+import WorkClients from '../components/workClients/WorkClients';
+import Footer from '../components/footer/Footer.astro'
+---
+
+<Layout title='José Pablo Arancibia Linker'>
+	<main>
+		<Callout />
+		<Card />
+		<FeatureWeb />
+		<FeatureIngSoft />
+		<Projects />
+		<WorkClients client:only/>
+		<Footer />
+	</main>
+</Layout>
