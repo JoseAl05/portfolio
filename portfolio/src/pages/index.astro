@@ -1,5 +1,5 @@
 ---
-import Callout from '../components/callout/Callout.astro';
+import Callout from '../components/callout/Callout';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/card/Card.astro';
 import FeatureWeb from '../components/features/FeatureWeb.astro';
@@ -11,7 +11,7 @@ import Footer from '../components/footer/Footer.astro'
 
 <Layout title='José Pablo Arancibia Linker'>
 	<main>
-		<Callout />
+		<Callout client:only/>
 		<Card />
 		<FeatureWeb />
 		<FeatureIngSoft />
