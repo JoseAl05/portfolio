@@ -1,140 +1,43 @@
 ---
-import {
-    useSanityClient,
-    createImageBuilder,
-} from 'astro-sanity';
-import { toHTML, uriLooksSafe } from '@portabletext/to-html';
+
+import { toHTML} from '@portabletext/to-html';
 import htm from 'htm';
 // @ts-ignore
 import vhtml from 'vhtml';
-import { Github,Link } from 'lucide-react';
 
-const { projectId, title, description, image, isDeployed, tools, siteURL,gitURL,hasGit } =
-    Astro.props;
-// @ts-ignore
-const imageBuilder = createImageBuilder(useSanityClient());
+const {
+  projectId,
+  title,
+  description
+} = Astro.props;
 
-const urlForImage = imageBuilder.image(image.asset._ref);
-
-const html = htm.bind(vhtml);
 const myPortableTextComponents = {
-    marks: {
-        link: ({ children, value }: { children: any; value: any }) => {
-            const href = value.href || '';
-
-            if (uriLooksSafe(href)) {
-                const rel = href.startsWith('/')
-                    ? undefined
-                    : 'noreferrer noopener';
-                return html`<a
-                    href="${href}"
-                    rel="${rel}"
-                    class="text-blue-400 font-bold transition-all duration-300 ease-in-out hover:text-blue-800"
-                    >${children}</a
-                >`;
-            }
-
-            // If the URI appears unsafe, render the children (eg, text) without the link
-            return children;
-        },
+  marks: {
+    link: ({ children, value }: { children: any; value: any }) => {
+      // If the URI appears unsafe, render the children (eg, text) without the link
+      return children;
     },
+  },
 };
 const descriptionHTML = toHTML(description, {
-    // @ts-ignore
-    components: myPortableTextComponents,
+  // @ts-ignore
+  components: myPortableTextComponents,
 });
 ---
 
 <div
-    class='flex flex-col lg:max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow'
+  class='relative border border-zinc-300 rounded-xl cursor-pointer transition group hover:bg-gradient-to-r hover:from-[#080055] hover:to-[#008ab9]'
 >
-    {
-        isDeployed ? (
-            <span class='flex flex-col items-center bg-green-700 text-white text-base absolute z-10 px-3 tracking-widest rounded-md lg:text-lg'>
-                En Producción
-                <br />
-                <a
-                    class='flex justify-center items-center gap-2 text-blue-950 text-base lg:text-lg font-bold cursor-pointer transition hover:text-blue-400'
-                    href={siteURL}
-                    target='_blank'
-                    rel='noreferrer'
-                >
-                    <Link size={20}/>
-                    Web
-                </a>
-                {
-                    hasGit && (
-                        <a
-                            class='flex justify-center items-center gap-2 text-blue-950 text-base lg:text-lg font-bold cursor-pointer transition hover:text-blue-400'
-                            href={gitURL}
-                            target='_blank'
-                            rel='noreferrer'
-                        >
-                            <Github
-                                size={20}
-                            />
-                            Repo
-                        </a>
-                    )
-                }
-            </span>
-        ) : (
-            <span class='flex flex-col items-center bg-red-600 text-white text-base absolute z-10 px-3 tracking-widest rounded-md lg:text-lg'>
-                Not Hosted
-                {
-                    hasGit && (
-                        <br/>
-                        <a
-                            class='flex justify-center items-center gap-2 text-blue-950 text-base lg:text-lg font-bold cursor-pointer transition hover:text-blue-400'
-                            href={gitURL}
-                            target='_blank'
-                            rel='noreferrer'
-                        >
-                            <Github
-                                size={20}
-                            />
-                            Repo
-                        </a>
-                    )
-                }
-            </span>
-        )
-    }
-
-    <img
-        class='rounded-t-lg aspect-[1280/1360]'
-        src={urlForImage.url()}
-        alt={title}
-        width='100%'
-        height='100%'
-        style={`view-transition-name: project-${projectId}`}
-    />
-    <div class='flex flex-col p-5'>
-        <div class='p-2 text-center mt-auto'>
-            <h5
-                class='mb-2 text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white'
-                style='view-transition-name: project-heading'
-            >
-                {title}
-            </h5>
-        </div>
-        <div class='mb-5 font-normal text-gray-700 dark:text-gray-400'>
-            <Fragment set:html={descriptionHTML} />
-        </div>
-        {
-            tools &&
-                tools.map((tool: any, index: any) => {
-                    return (
-                        <span
-                            class='inline-block rounded-full text-center px-3 py-2 text-xs md:text-sm lg:text-sm font-semibold text-black mr-2 mb-2'
-                            style={{
-                                backgroundColor: `${tool.toolColor.value}`,
-                            }}
-                        >
-                            {tool.toolName}
-                        </span>
-                    );
-                })
-        }
+  <a href=`/proyecto/${projectId}`>
+    <div class='relative w-full h-full p-4 md:p-8'>
+      <h1
+        class='text-xl font-bold sm:text-3xl transition group-hover:text-white'
+      >
+        {title}
+      </h1>
+      <div class='leading-8 mt-4 text-base transition group-hover:text-white'>
+        <Fragment set:html={descriptionHTML} />
+      </div>
     </div>
+  </a>
 </div>
