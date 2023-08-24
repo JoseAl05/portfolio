@@ -19,12 +19,6 @@ export const projects = await useSanityClient().fetch(`*[_type == "project"]`);
           projectId={project._id}
           title={project.title}
           description={project.description}
-          image={project.image}
-          isDeployed={project.isDeployed}
-          tools={project.tools}
-          siteURL={project.siteURL}
-          hasGit={project.hasGit}
-          gitURL={project.gitURL}
         />
       ))
     }
