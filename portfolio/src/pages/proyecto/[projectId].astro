@@ -1,0 +1,94 @@
+---
+import { useSanityClient, createImageBuilder } from 'astro-sanity';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { Github, Link } from 'lucide-react';
+
+const { projectId } = Astro.params;
+
+const project = await useSanityClient().fetch(
+  `*[_type == "project" && _id == "${projectId ? projectId : ''}"]`
+);
+
+// @ts-ignore
+const imageBuilder = createImageBuilder(useSanityClient());
+
+const urlForImage = imageBuilder.image(project[0].image.asset._ref);
+---
+
+<ProjectLayout title='Proyecto'>
+  <div class='py-36 space-y-5 max-w-7xl mx-auto'>
+    {
+      project.map((item: any) => (
+        <div>
+          <h1 class='text-4xl text-gray-200 font-bold text-center sm:text-5xl md:text-6xl lg:text-7xl'>
+            {item.title}
+          </h1>
+          <img
+            class='shadow rounded-xl max-w-full h-auto align-middle border-none mt-10 mx-auto'
+            src={urlForImage.url()}
+            alt={item.title}
+          />
+          <div class='flex flex-col justify-between items-center pt-36 pb-20 space-y-4 md:items-start'>
+            <h2 class='text-2xl text-gray-200 font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
+              Repositorio
+            </h2>
+            <hr class='w-60 md:w-full h-1' />
+          </div>
+          <ul class='flex items-center justify-center list-disc text-gray-200 md:justify-start'>
+            {item.hasGit ? (
+              <li class='mx-0 md:mx-10'>
+                <a
+                  class='text-base underline transition hover:text-cyan-500 md:text-xl'
+                  href={item.gitURL}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Github
+                </a>
+              </li>
+            ) : (
+              <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-10'>Codigo no disponible en repositorio.</li>
+            )}
+          </ul>
+          <div class='flex flex-col justify-between items-center pt-36 pb-20 space-y-4 md:items-start'>
+            <h2 class='text-2xl text-gray-200 font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
+              Live Demo
+            </h2>
+            <hr class='w-60 md:w-full h-1' />
+          </div>
+          <ul class='flex items-center justify-center list-disc text-gray-200 md:justify-start'>
+            {item.isDeployed ? (
+              <li class='mx-0 md:mx-10'>
+                <a
+                  class='text-base underline transition hover:text-cyan-500 md:text-xl'
+                  href={item.siteURL}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Demo
+                </a>
+              </li>
+            ) : (
+              <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-10'>Demo no disponible.</li>
+            )}
+          </ul>
+          <div class='flex flex-col justify-between items-center pt-36 pb-20 space-y-4 md:items-start'>
+            <h2 class='text-2xl text-gray-200 font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
+              Herramientas
+            </h2>
+            <hr class='w-60 md:w-full h-1' />
+          </div>
+          <div class='w-full'>
+            <ul class='flex flex-col items-center gap-3 list-disc text-gray-200 md:items-start'>
+              {item.tools.map((tool: any) => (
+                <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-10'>
+                  {tool.toolName}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</ProjectLayout>
