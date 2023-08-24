@@ -36,23 +36,23 @@ const Navbar = () => {
                     <div className="w-full flex-grow lg:flex lg:items-center hidden lg:w-auto mt-2 lg:mt-0 lg:bg-transparent text-white p-4 lg:p-0 z-20">
                         <ul className="list-reset flex justify-end flex-1 items-center">
                             <li className="mr-3">
-                                <a href="#sobremi" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
+                                <a href="/#sobremi" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
                                     Sobre Mí
                                 </a>
                             </li>
                             <li className="mr-3">
-                                <a href="#competencias" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
+                                <a href="/#competencias" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
                                     Competencias
                                 </a>
                             </li>
                             <li className="mr-3">
 
-                                <a href="#proyectos" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
+                                <a href="/#proyectos" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
                                     Proyectos/Desarrollos
                                 </a>
                             </li>
                             <li className="mr-3">
-                                <a href="#trabajos" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
+                                <a href="/#trabajos" className="inline-block text-white font-bold transition-all duration-300 ease-in-out hover:text-teal-300 hover:tracking-wide hover:scale-110 py-2 px-4">
                                     Trabajo/Clientes
                                 </a>
                             </li>
