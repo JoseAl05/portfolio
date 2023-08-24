@@ -16,7 +16,7 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
 ---
 
 <ProjectLayout title='Proyecto'>
-  <div class='py-36 space-y-5 max-w-7xl mx-auto'>
+  <div class='py-44 space-y-5 max-w-7xl mx-auto lg:py-36'>
     {
       project.map((item: any) => (
         <div>
@@ -24,11 +24,11 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
             {item.title}
           </h1>
           <img
-            class='shadow rounded-xl max-w-full h-auto align-middle border-none mt-10 mx-auto'
+            class='shadow rounded-none h-auto align-middle border-none mt-10 mx-auto lg:rounded-xl md:max-w-xl lg:max-w-2xl'
             src={urlForImage.url()}
             alt={item.title}
           />
-          <div class='flex flex-col justify-between items-center pt-36 pb-20 space-y-4 md:items-start'>
+          <div class='flex flex-col justify-between items-center mx-10 pt-20 pb-12 space-y-4 md:items-start md:pt-36 md:pb-20'>
             <h2 class='text-2xl text-gray-200 font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
               Repositorio
             </h2>
@@ -36,7 +36,7 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
           </div>
           <ul class='flex items-center justify-center list-disc text-gray-200 md:justify-start'>
             {item.hasGit ? (
-              <li class='mx-0 md:mx-10'>
+              <li class='mx-0 md:mx-20'>
                 <a
                   class='text-base underline transition hover:text-cyan-500 md:text-xl'
                   href={item.gitURL}
@@ -47,10 +47,10 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
                 </a>
               </li>
             ) : (
-              <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-10'>Codigo no disponible en repositorio.</li>
+              <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-20'>Codigo no disponible en repositorio.</li>
             )}
           </ul>
-          <div class='flex flex-col justify-between items-center pt-36 pb-20 space-y-4 md:items-start'>
+          <div class='flex flex-col justify-between items-center mx-10 pt-20 pb-12 space-y-4 md:items-start md:pt-36 md:pb-20'>
             <h2 class='text-2xl text-gray-200 font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
               Live Demo
             </h2>
@@ -58,7 +58,7 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
           </div>
           <ul class='flex items-center justify-center list-disc text-gray-200 md:justify-start'>
             {item.isDeployed ? (
-              <li class='mx-0 md:mx-10'>
+              <li class='mx-0 md:mx-20'>
                 <a
                   class='text-base underline transition hover:text-cyan-500 md:text-xl'
                   href={item.siteURL}
@@ -69,10 +69,10 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
                 </a>
               </li>
             ) : (
-              <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-10'>Demo no disponible.</li>
+              <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-20'>Demo no disponible.</li>
             )}
           </ul>
-          <div class='flex flex-col justify-between items-center pt-36 pb-20 space-y-4 md:items-start'>
+          <div class='flex flex-col justify-between items-center mx-10 pt-20 pb-12 space-y-4 md:items-start md:pt-36 md:pb-20'>
             <h2 class='text-2xl text-gray-200 font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
               Herramientas
             </h2>
@@ -81,7 +81,7 @@ const urlForImage = imageBuilder.image(project[0].image.asset._ref);
           <div class='w-full'>
             <ul class='flex flex-col items-center gap-3 list-disc text-gray-200 md:items-start'>
               {item.tools.map((tool: any) => (
-                <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-10'>
+                <li class='text-gray-200 text-base mx-0 md:text-xl md:mx-20'>
                   {tool.toolName}
                 </li>
               ))}

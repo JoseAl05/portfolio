@@ -8,10 +8,10 @@ const Callout = () => {
         <div className='container px-3 mx-auto'>
           <div className='w-full pt-20 text-center md:h[40vh] lg:h-[45vh]'>
             <div className='space-y-5'>
-              <h1 className='text-white text-4xl font-extrabold sm:text-5xl md:text-6xl lg:text-7xl'>
+              <h1 className='text-white text-2xl font-extrabold sm:text-5xl md:text-6xl lg:text-7xl'>
                 Ingeniero de Ejecución en Informática
               </h1>
-              <div className='text-2xl text-white sm:text-4xl md:pt-10 md:text-5xl lg:text-6xl'>
+              <div className='text-xl text-white sm:text-4xl md:pt-10 md:text-5xl lg:text-6xl'>
                 <TypewriterComponent
                   options={{
                     strings: [
@@ -27,7 +27,7 @@ const Callout = () => {
           </div>
         </div>
       </div>
-      <div className='relative -mt-0 lg:-mt-24'>
+      <div className='relative'>
         <svg
           viewBox='0 0 1428 174'
           version='1.1'

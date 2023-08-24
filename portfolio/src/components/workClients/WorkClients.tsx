@@ -22,15 +22,15 @@ const WorkClients = () => {
                                 role='tab'
                                 className={
                                     activeTabId === 1
-                                        ? 'flex items-center w-full h-10 px-20 pb-2 pt-0 bg-transparent border-l-2 border-solid font-thunderMedium tracking-widest text-lg border-teal-500 text-teal-500 text-center whitespace-nowrap sm:scale-110'
-                                        : 'flex items-center w-full h-10 px-20 pb-2 pt-0 bg-transparent border-l-2 border-solid font-thunderLight tracking-wider text-lg border-gray-500 text-gray-500  text-center whitespace-nowrap hover:text-teal-500  transition ease-in-out delay-150'
+                                        ? 'flex items-center w-full h-10 pl-20 pb-2 pt-0 bg-transparent border-l-2 border-solid font-thunderMedium tracking-widest text-lg border-teal-500 text-teal-500 text-center whitespace-nowrap sm:scale-110'
+                                        : 'flex items-center w-full h-10 pl-20 pb-2 pt-0 bg-transparent border-l-2 border-solid font-thunderLight tracking-wider text-lg border-gray-500 text-gray-500  text-center whitespace-nowrap hover:text-teal-500  transition ease-in-out delay-150'
                                 }
                                 onClick={() => setActiveTabId(1)}
                                 tabIndex={activeTabId === 1 ? 0 : -1}
                                 aria-selected={activeTabId === 1}
                                 aria-controls={`panel-${1}`}
                             >
-                                <span>Municipalidad de Yumbel</span>
+                                <span className='text-sm md:text-base lg:text-lg'>Municipalidad de Yumbel</span>
                             </button>
                             <button
                                 id='tab-2'
